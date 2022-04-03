@@ -3,7 +3,7 @@ from PIL import Image as I
 from PIL import ImageTk as IT
 from PIL import ImageDraw as ID
 from PIL import ImageFont as IF
-import pyqrcode as Q
+import qrcode as Q
 
 
  
