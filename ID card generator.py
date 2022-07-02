@@ -167,8 +167,10 @@ class main_window:
         # creating a button to generate an id card
         self.gen_button = Button(self.frame1,
                                  text = 'Generate',
-                                 font = ('cooper', 15, 'bold')
+                                 font = ('cooper', 15, 'bold'),
+                                 command=self.Generate
                                  )
+        
         # creating a button to clear the data
         self.clear_button = Button(self.frame1,
                                  text = 'Clear',
@@ -190,6 +192,16 @@ class main_window:
                               fg = 'red',
                               bg = 'white'
                               )
+        # creating a frame for the ID card(frame2) area
+        self.ID_Frame = Frame(self.frame2,
+                              relief=SUNKEN,
+                              bd=1)
+        # creating a label for frame2
+        self.F2_txt = Label(self.ID_Frame,
+                              text="ID\nCard\nNot Found",
+                              relief=SUNKEN,
+                              font = ('cooper', 15, 'bold'),
+                              bd=1)
         
         
         # placing the variables
@@ -216,7 +228,15 @@ class main_window:
         self.clear_button.place(x=350, y=430, width=200)
         self.msg_frame1.place(x=10,y=490, width=625, height=150)
         self.msg_label.place(x=0, y=0, relwidth=1, relheight=1)
+        self.ID_Frame.place(x=10, y=100, width=645, height=400)
+        self.F2_txt.place(x=0, y=0, relwidth=1, relheight=1)
         
+    def Generate(self):
+        self.logo_img = I.new('RGB', (1000, 600), (255, 255, 255))
+        self.logo_img.show()
+
+    
+    
     
 root = Tk()
 App = main_window(root)
