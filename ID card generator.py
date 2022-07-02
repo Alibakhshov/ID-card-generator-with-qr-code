@@ -1,10 +1,12 @@
 from tkinter import *
+from turtle import fillcolor
 from PIL import Image as I
 from tkinter import ttk 
 from PIL import ImageTk as IT
 from PIL import ImageDraw as ID
 from PIL import ImageFont as IF
 import qrcode as Q
+from resizeimage  import resizeimage as re
 
 
  
@@ -116,16 +118,16 @@ class main_window:
         )
         
         
-        self.name = StringVar()
-        self.gender = StringVar()
-        self.age = StringVar()
+        self.Name = StringVar()
+        self.Gender = StringVar()
+        self.Age = StringVar()
         self.bloodGroup = StringVar()
-        self.phone = StringVar()
-        self.email = StringVar()
+        self.Phone = StringVar()
+        self.Email = StringVar()
         
         # creating an entry for the "Full name" label
         self.fullname_entry = Entry(self.frame1,
-                                    textvariable=self.name,
+                                    textvariable=self.Name,
                                     font = 5, 
                                     width = 30,
                                     bg = "white", 
@@ -134,17 +136,17 @@ class main_window:
         
          # creating an entry for the "gender" label
         self.gender_entry = ttk.Combobox(self.frame1,
-                                    textvariable=self.gender,     
+                                    textvariable=self.Gender,     
                                     font = 5, 
                                     width = 28,
                                     state='readonly'                                                           
                                     )
-        self.gender_entry['values'] = ('Male', 'Female', 'Others')
-        self.gender_entry.current()
+        self.gender_entry['values'] = ('Gender', 'Male', 'Female', 'Others')
+        self.gender_entry.current(0)
         
         # creating an entry for the "age" label
         self.age_entry = Entry(self.frame1,
-                                    textvariable=self.age,
+                                    textvariable=self.Age,
                                     font = 5, 
                                     width = 30,
                                     bg = "white", 
@@ -162,7 +164,7 @@ class main_window:
         
         # creating an entry for the "phone" label
         self.phone_entry = Entry(self.frame1,
-                                    textvariable=self.phone,
+                                    textvariable=self.Phone,
                                     font = 5, 
                                     width = 30,
                                     bg = "white", 
@@ -171,7 +173,7 @@ class main_window:
         
         # creating an entry for the "email" label
         self.email_entry = Entry(self.frame1,
-                                    textvariable=self.email,
+                                    textvariable=self.Email,
                                     font = 5, 
                                     width = 30,
                                     bg = "white", 
@@ -182,16 +184,18 @@ class main_window:
         self.gen_button = Button(self.frame1,
                                  text = 'Generate',
                                  font = ('cooper', 15, 'bold'),
-                                 command=self.Generate
+                                 command= self.Generate
                                  )
         
         # creating a button to clear the data
         self.clear_button = Button(self.frame1,
+                                 command= self.Clear,
                                  text = 'Clear',
                                  font = ('cooper', 15, 'bold')
                                  )
         
         # printing a message on the frame1
+        self.msg = ''
         self.msg_frame1 = Frame(self.frame1, 
                                 bg = 'white',
                                 relief=SUNKEN, 
@@ -247,7 +251,8 @@ class main_window:
         
         
     def Generate(self):
-        if self.name.get() == '' or self.gender.get() == '' or self.age.get() == '' or self.bloodGroup.get() == '' or self.phone.get() == '' or self.email.get() == '':
+        global msg
+        if self.Name.get() == '' or self.Gender.get() == '' or self.Age.get() == '' or self.bloodGroup.get() == '' or self.Phone.get() == '' or self.Email.get() == '':
             self.msg = 'Error'
             self.msg_label.config(text=self.msg, fg = 'red')
             
@@ -267,11 +272,39 @@ class main_window:
           self.Drw.text((20, 250), 'Blood-group:', fill='#000000', font=fon)
           self.Drw.text((20, 300), 'Phone:', fill='#000000', font=fon)
           self.Drw.text((20, 350), 'Email:', fill='#000000', font=fon)
+          
+          self.Drw.text((300, 100), self.Name.get() , fill='#000000', font=fon)
+          self.Drw.text((300, 150), self.Gender.get(), fill='#000000', font=fon)
+          self.Drw.text((300, 200), self.Age.get(), fill='#000000', font=fon)
+          self.Drw.text((300, 250), self.bloodGroup.get(), fill='#000000', font=fon)
+          self.Drw.text((300, 300), self.Phone.get(), fill='#000000', font=fon)
+          self.Drw.text((300, 350), self.Email.get(), fill='#000000', font=fon)
+          
           self.res_F2 = self.img.resize((640, 400))
           self.img_F2 = IT.PhotoImage(self.res_F2)
           self.F2_txt.config(image=self.img_F2)
+          self.Qrcode = Q.QRCode(version=1, box_size=10, border=1)
+          self.Qrcode.add_data(f'Full Name: {self.Name.get()}\nGender: {self.Gender.get()} \nAge: {self.Age.get()} \nBlood Group: {self.bloodGroup.get()} \nPhone: {self.Phone.get()} \nEmail: {self.Email.get()} ')
+          self.Qrcode.make(fit=True)
+          self.Qr = self.Qrcode.make_image(fill_color='#000000', back_color='#ffffff')
+          self.Qr.save('new.png')
+          
+          
+          self.msg = 'Done'
+          self.msg_label.config(text=self.msg, fg = 'green')
     
-    
+    def Clear(self):
+        
+        self.Name.set('')
+        self.Gender.set('') 
+        self.Age.set('')
+        self.bloodGroup.set('')
+        self.Phone.set('')
+        self.Email.set('')
+        self.msg_label.config(text='')
+        self.F2_txt.config(image='')
+        self.gender_entry.current(0) 
+        
     
 root = Tk()
 App = main_window(root)
