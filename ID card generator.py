@@ -115,8 +115,17 @@ class main_window:
                                 font = 20,                    
         )
         
+        
+        self.name = StringVar()
+        self.gender = StringVar()
+        self.age = StringVar()
+        self.bloodGroup = StringVar()
+        self.phone = StringVar()
+        self.email = StringVar()
+        
         # creating an entry for the "Full name" label
         self.fullname_entry = Entry(self.frame1,
+                                    textvariable=self.name,
                                     font = 5, 
                                     width = 30,
                                     bg = "white", 
@@ -125,6 +134,7 @@ class main_window:
         
          # creating an entry for the "gender" label
         self.gender_entry = ttk.Combobox(self.frame1,
+                                    textvariable=self.gender,     
                                     font = 5, 
                                     width = 28,
                                     state='readonly'                                                           
@@ -134,6 +144,7 @@ class main_window:
         
         # creating an entry for the "age" label
         self.age_entry = Entry(self.frame1,
+                                    textvariable=self.age,
                                     font = 5, 
                                     width = 30,
                                     bg = "white", 
@@ -142,6 +153,7 @@ class main_window:
         
         # creating an entry for the "blood group" label
         self.blood_entry = Entry(self.frame1,
+                                    textvariable=self.bloodGroup,
                                     font = 5, 
                                     width = 30,
                                     bg = "white", 
@@ -150,6 +162,7 @@ class main_window:
         
         # creating an entry for the "phone" label
         self.phone_entry = Entry(self.frame1,
+                                    textvariable=self.phone,
                                     font = 5, 
                                     width = 30,
                                     bg = "white", 
@@ -158,6 +171,7 @@ class main_window:
         
         # creating an entry for the "email" label
         self.email_entry = Entry(self.frame1,
+                                    textvariable=self.email,
                                     font = 5, 
                                     width = 30,
                                     bg = "white", 
@@ -178,7 +192,6 @@ class main_window:
                                  )
         
         # printing a message on the frame1
-        self.msg = 'asdfsd'
         self.msg_frame1 = Frame(self.frame1, 
                                 bg = 'white',
                                 relief=SUNKEN, 
@@ -231,10 +244,32 @@ class main_window:
         self.ID_Frame.place(x=10, y=100, width=645, height=400)
         self.F2_txt.place(x=0, y=0, relwidth=1, relheight=1)
         
+        
+        
     def Generate(self):
-        self.logo_img = I.new('RGB', (1000, 600), (255, 255, 255))
-        self.logo_img.show()
-
+        if self.name.get() == '' or self.gender.get() == '' or self.age.get() == '' or self.bloodGroup.get() == '' or self.phone.get() == '' or self.email.get() == '':
+            self.msg = 'Error'
+            self.msg_label.config(text=self.msg, fg = 'red')
+            
+        elif self.gender_entry.current() == 0:
+            self.msg = 'Select Gender'
+            self.msg_label.config(text=self.msg, fg = 'red')
+            
+        else:
+        
+        
+          fon = IF.truetype('ArialCE.ttf', size=30)
+          self.img = I.new('RGB', (1000, 600), (255, 255, 255))
+          self.Drw = ID.Draw(self.img)
+          self.Drw.text((20, 100), 'Full Name:', fill='#000000', font=fon)
+          self.Drw.text((20, 150), 'Gender:', fill='#000000', font=fon)
+          self.Drw.text((20, 200), 'Age:', fill='#000000', font=fon)
+          self.Drw.text((20, 250), 'Blood-group:', fill='#000000', font=fon)
+          self.Drw.text((20, 300), 'Phone:', fill='#000000', font=fon)
+          self.Drw.text((20, 350), 'Email:', fill='#000000', font=fon)
+          self.res_F2 = self.img.resize((640, 400))
+          self.img_F2 = IT.PhotoImage(self.res_F2)
+          self.F2_txt.config(image=self.img_F2)
     
     
     
