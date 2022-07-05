@@ -279,7 +279,7 @@ class main_window:
           self.Drw.text((300, 250), self.bloodGroup.get(), fill='#000000', font=fon)
           self.Drw.text((300, 300), self.Phone.get(), fill='#000000', font=fon)
           self.Drw.text((300, 350), self.Email.get(), fill='#000000', font=fon)
-          self.img.save('QrCode of' + str(self.Name.get())+'.png')
+          self.img.save('ID of' + str(self.Name.get())+'.png')
           self.res_F2 = self.img.resize((640, 400))
           self.img_F2 = IT.PhotoImage(self.res_F2)
           self.F2_txt.config(image=self.img_F2)
