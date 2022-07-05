@@ -279,7 +279,7 @@ class main_window:
           self.Drw.text((300, 250), self.bloodGroup.get(), fill='#000000', font=fon)
           self.Drw.text((300, 300), self.Phone.get(), fill='#000000', font=fon)
           self.Drw.text((300, 350), self.Email.get(), fill='#000000', font=fon)
-          
+          self.img.save('QrCode of' + str(self.Name.get())+'.png')
           self.res_F2 = self.img.resize((640, 400))
           self.img_F2 = IT.PhotoImage(self.res_F2)
           self.F2_txt.config(image=self.img_F2)
@@ -287,8 +287,9 @@ class main_window:
           self.Qrcode.add_data(f'Full Name: {self.Name.get()}\nGender: {self.Gender.get()} \nAge: {self.Age.get()} \nBlood Group: {self.bloodGroup.get()} \nPhone: {self.Phone.get()} \nEmail: {self.Email.get()} ')
           self.Qrcode.make(fit=True)
           self.Qr = self.Qrcode.make_image(fill_color='#000000', back_color='#ffffff')
-          self.Qr.save('new.png')
-          self.Qr_res = re.resize_cover
+          self.Qr.save('QrCode of' + str(self.Name.get())+'.png')
+          self.Qr_res = re.resize_cover(self.Qr,[100, 100])
+          self.img.paste(self.Qr_res)
           self.Qrcode.clear()
           
           self.msg = 'Done'
