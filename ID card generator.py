@@ -288,7 +288,8 @@ class main_window:
           self.Qrcode.make(fit=True)
           self.Qr = self.Qrcode.make_image(fill_color='#000000', back_color='#ffffff')
           self.Qr.save('new.png')
-          
+          self.Qr_res = re.resize_cover
+          self.Qrcode.clear()
           
           self.msg = 'Done'
           self.msg_label.config(text=self.msg, fg = 'green')
