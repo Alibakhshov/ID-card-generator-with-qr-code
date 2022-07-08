@@ -18,46 +18,45 @@ class main_window:
         self.root.geometry("1360x800")
         self.root.resizable()
         
-        # creating a label to write a title
+        # Creating a label to write a title
         self.title = Label(self.root, 
                            text = "ID card generator", 
                            font = ('cooper', 20, 'bold'),
                            pady = 20,
                            bg   = '#000000',
-                           fg   = '#ffffff'
-        )
+                           fg   = '#ffffff')
         
-        # creating a logo in our label
+        # Creating a logo in our label
         self.logo = Frame(self.title, 
                           relief = SUNKEN,
                           bd = 1,
-                          bg = 'white'                  
-         )
+                          bg = 'white')
+        
         self.logo_img = I.open('user logo.png')
         self.res_img = self.logo_img.resize((70,70))
         self.Tk_Image = IT.PhotoImage(self.res_img)
         
         
-        # putting our logo image into the label
+        # Putting our logo image into the label
         self.logo_text = Label(self.logo,
                                image = self.Tk_Image                        
         )
         
-        # creating the first frame 
+        # Creating the first frame 
         self.frame1 = Frame(self.root, 
                           relief = SUNKEN,
                           bd = 1,
                           bg = 'white'                  
          )
         
-        # creating the second frame
+        # Creating the second frame
         self.frame2 = Frame(self.root, 
                           relief = SUNKEN,
                           bd = 1,
                           bg = 'white'                  
          )
         
-        # creating a title for the first frame (frame1)
+        # Creating a title for the first frame (frame1)
         self.frame1_tit = Label(self.frame1,
                                 bg = '#000000',
                                 fg = '#ffffff',
@@ -66,7 +65,7 @@ class main_window:
                                 pady = 5                        
         )
         
-        # creating a title for the second frame (frame2)
+        # Creating a title for the second frame (frame2)
         self.frame2_tit = Label(self.frame2,
                                 bg = '#000000',
                                 fg = '#ffffff',
@@ -75,42 +74,42 @@ class main_window:
                                 pady = 5                        
         )
         
-         # creating a label for first name
+         # Creating a label for first name
         self.full_name = Label(self.frame1,
                                 text = 'Full name',
                                 bg = 'white',
                                 font = 20,                    
         )
         
-        # creating a label for gender
+        # Creating a label for gender
         self.gender = Label(self.frame1,
                                 text = 'Gender',
                                 bg = 'white',
                                 font = 20,                    
         )
         
-        # creating a label for age
+        # Creating a label for age
         self.age = Label(self.frame1,
                                 text = 'Age',
                                 bg = 'white',
                                 font = 20,                    
         )
         
-        # creating a label for blood group
+        # Creating a label for blood group
         self.blood_group = Label(self.frame1,
                                 text = 'Blood group',
                                 bg = 'white',
                                 font = 20,                    
         )
         
-        # creating a label for mobile
+        # Creating a label for mobile
         self.phone = Label(self.frame1,
                                 text = 'Mobile',
                                 bg = 'white',
                                 font = 20,                    
         )
         
-        # creating a label for email
+        # Creating a label for email
         self.email = Label(self.frame1,
                                 text = 'Email',
                                 bg = 'white',
@@ -199,8 +198,7 @@ class main_window:
         self.msg_frame1 = Frame(self.frame1, 
                                 bg = 'white',
                                 relief=SUNKEN, 
-                                bd=1
-                                )
+                                bd=1,)
         
         # creating a label for the frame1 message
         self.msg_label = Label(self.msg_frame1, 
@@ -212,12 +210,13 @@ class main_window:
         # creating a frame for the ID card(frame2) area
         self.ID_Frame = Frame(self.frame2,
                               relief=SUNKEN,
-                              bd=1)
+                              bd=1,
+                              bg = 'white')
         # creating a label for frame2
         self.F2_txt = Label(self.ID_Frame,
                               text="ID\nCard\nNot Found",
                               relief=SUNKEN,
-                              font = ('cooper', 15, 'bold'),
+                              font = ('cooper', 20, 'bold'),
                               bd=1)
         
         
@@ -284,10 +283,10 @@ class main_window:
           self.Qrcode.add_data(f'Full Name: {self.Name.get()}\nGender: {self.Gender.get()} \nAge: {self.Age.get()} \nBlood Group: {self.bloodGroup.get()} \nPhone: {self.Phone.get()} \nEmail: {self.Email.get()} ')
           self.Qrcode.make(fit=True)
           self.Qr = self.Qrcode.make_image(fill_color='#000000', back_color='#ffffff')
-          self.Qr.save('QR Code\Qr Code of ' + str(self.Name.get())+'.png')
+          self.Qr.save('QR Code/Qr Code of ' + str(self.Name.get())+'.png')
           self.Qr_res = re.resize_cover(self.Qr,[300, 300])
           self.img.paste(self.Qr_res, (680, 100))
-          self.img.save('ID Card\ID Card of ' + str(self.Name.get())+'.png')
+          self.img.save('ID Card/ID Card of ' + str(self.Name.get())+'.png')
           self.res_F2 = self.img.resize((640, 400))
           self.img_F2 = IT.PhotoImage(self.res_F2)
           self.F2_txt.config(image=self.img_F2)
