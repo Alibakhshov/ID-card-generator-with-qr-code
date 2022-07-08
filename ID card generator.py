@@ -99,7 +99,7 @@ class main_window:
         
         # Creating a label for blood group
         self.birthdate = Label(self.frame1,
-                                text = 'Blood group',
+                                text = 'Birthdate',
                                 bg = 'white',
                                 font = ('cooper', 13, 'bold'),                      
         )
@@ -122,7 +122,7 @@ class main_window:
         self.Name = StringVar()
         self.Gender = StringVar()
         self.Age = StringVar()
-        self.bloodGroup = StringVar()
+        self.birthDate = StringVar()
         self.Phone = StringVar()
         self.Email = StringVar()
         
@@ -163,7 +163,7 @@ class main_window:
         
         # creating an entry for the "blood group" label
         self.blood_entry = Entry(self.frame1,
-                                    textvariable=self.bloodGroup,
+                                    textvariable=self.birthDate,
                                     font = 5, 
                                     width = 30,
                                     bg = "white", 
@@ -226,7 +226,7 @@ class main_window:
         # creating a frame for the ID card(frame2) area
         self.ID_Frame = Frame(self.frame2,
                               relief=SUNKEN,
-                              bd=1,
+                              bd=2,
                               bg = 'white')
         
         # creating a label for frame2
@@ -260,17 +260,16 @@ class main_window:
         self.gen_button.place(x=10, y=550, width=200)
         self.clear_button.place(x=250, y=550, width=200)
         self.exit_button.place(x=500, y=550, width=200)
-        
         self.msg_frame1.place(x=10,y=450, width=625, height=190)
         self.msg_label.place(x=0, y=0, relwidth=1, relheight=1)
-        self.ID_Frame.place(x=10, y=100, width=690, height=400)
+        self.ID_Frame.place(x=30, y=100, width=650, height=400)
         self.F2_txt.place(x=0, y=0, relwidth=1, relheight=1)
         
         
         
     def Generate(self):
         
-        if self.Name.get() == '' or self.Gender.get() == '' or self.Age.get() == '' or self.bloodGroup.get() == '' or self.Phone.get() == '' or self.Email.get() == '':
+        if self.Name.get() == '' or self.Gender.get() == '' or self.Age.get() == '' or self.birthDate.get() == '' or self.Phone.get() == '' or self.Email.get() == '':
             self.msg = 'Please fill in all required entry fields'
             self.msg_label.config(text=self.msg, fg = 'red', font = ('cooper', 20, 'bold'))
             
@@ -278,18 +277,12 @@ class main_window:
             self.msg = 'Please select gender'
             self.msg_label.config(text=self.msg, fg = 'red', font = ('cooper', 30, 'bold'))
             
-        elif self.Phone.get() == '93' or self.Phone.get() == '11' or self.Phone.get() == '55' or self.Phone.get() == '50' or self.Phone.get() == '91':
+        elif self.Phone.get() == '93' or self.Phone.get() == '11' or self.Phone.get() == '55' or self.Phone.get() == '50' or self.Phone.get() == '91' or self.Phone.get() == '77' or self.Phone.get() == '98':
             self.msg = 'Please indicate your country code\nExample: +992 XX XXX XX XX'
             self.msg_label.config(text=self.msg, fg = 'red', font = ('cooper', 20, 'bold'))
-        
-        elif self.Email.get() != '@':
-            self.msg = 'Invalid email'
-            self.msg_label.config(text=self.msg, fg = 'red', font = ('cooper', 30, 'bold'))
-            
             
         else:
-        
-        
+    
           fon = IF.truetype('ArialCE.ttf', size=30)
           self.img = I.new('RGB', (1000, 600), (255, 255, 255))
           self.Drw = ID.Draw(self.img)
@@ -303,12 +296,12 @@ class main_window:
           self.Drw.text((250, 100), self.Name.get() , fill='#000000', font=fon)
           self.Drw.text((250, 150), self.Gender.get(), fill='#000000', font=fon)
           self.Drw.text((250, 200), self.Age.get(), fill='#000000', font=fon)
-          self.Drw.text((250, 250), self.bloodGroup.get(), fill='#000000', font=fon)
+          self.Drw.text((250, 250), self.birthDate.get(), fill='#000000', font=fon)
           self.Drw.text((250, 300), self.Phone.get(), fill='#000000', font=fon)
           self.Drw.text((250, 350), self.Email.get(), fill='#000000', font=fon)
           
           self.Qrcode = Q.QRCode(version=1, box_size=10, border=1)
-          self.Qrcode.add_data(f'Full Name: {self.Name.get()}\nGender: {self.Gender.get()} \nAge: {self.Age.get()} \nBlood Group: {self.bloodGroup.get()} \nPhone: {self.Phone.get()} \nEmail: {self.Email.get()} ')
+          self.Qrcode.add_data(f'Full Name: {self.Name.get()}\nGender: {self.Gender.get()} \nAge: {self.Age.get()} \nBlood Group: {self.birthDate.get()} \nPhone: {self.Phone.get()} \nEmail: {self.Email.get()} ')
           self.Qrcode.make(fit=True)
           self.Qr = self.Qrcode.make_image(fill_color='#000000', back_color='#ffffff')
           self.Qr.save('QR Code/Qr Code of ' + str(self.Name.get())+'.png')
@@ -328,7 +321,7 @@ class main_window:
         self.Name.set('')
         self.Gender.set('') 
         self.Age.set('')
-        self.bloodGroup.set('')
+        self.birthDate.set('')
         self.Phone.set('')
         self.Email.set('')
         self.msg_label.config(text='')
