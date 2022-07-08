@@ -15,7 +15,7 @@ class main_window:
     def __init__(self, root):
         self.root = root
         self.root.title("ID card generator") 
-        self.root.geometry("1360x800")
+        self.root.geometry("1400x800")
         self.root.resizable()
         
         # Creating a label to write a title
@@ -60,7 +60,7 @@ class main_window:
         
         # Creating a title for the first frame (frame1)
         self.frame1_tit = Label(self.frame1,
-                                bg = '#000000',
+                                bg = '#292421',
                                 fg = '#ffffff',
                                 text = 'Details',
                                 font = ('cooper', 20, 'bold'),
@@ -69,7 +69,7 @@ class main_window:
         
         # Creating a title for the second frame (frame2)
         self.frame2_tit = Label(self.frame2,
-                                bg = '#000000',
+                                bg = '#292421',
                                 fg = '#ffffff',
                                 text = 'ID Card',
                                 font = ('cooper', 20, 'bold'),
@@ -98,7 +98,7 @@ class main_window:
         )
         
         # Creating a label for blood group
-        self.blood_group = Label(self.frame1,
+        self.birthdate = Label(self.frame1,
                                 text = 'Blood group',
                                 bg = 'white',
                                 font = ('cooper', 13, 'bold'),                      
@@ -189,20 +189,20 @@ class main_window:
                                     )
         
         # creating a button to generate an id card
-        self.gen_button = Button(self.frame1,
+        self.gen_button = Button(self.frame2,
                                  text = 'Generate',
                                  font = ('cooper', 15, 'bold'),
                                  command= self.Generate
                                  )
         
         # creating a button to clear the data
-        self.clear_button = Button(self.frame1,
+        self.clear_button = Button(self.frame2,
                                  command= self.Clear,
                                  text = 'Clear',
                                  font = ('cooper', 15, 'bold')
                                  )
         
-        self.exit_button = Button(self.frame1,
+        self.exit_button = Button(self.frame2,
                                  command= self.Exit,
                                  text = 'Exit',
                                  font = ('cooper', 15, 'bold')
@@ -242,13 +242,13 @@ class main_window:
         self.logo.place(x=3, y=2, width=70, height=70)
         self.logo_text.place(x=0, y=0, relheight=1, relwidth=1)
         self.frame1.place(x=10, y=100, width=665, height=650)
-        self.frame2.place(x=685, y=100, width=665, height=650)
+        self.frame2.place(x=685, y=100, width=710, height=650)
         self.frame1_tit.place(x=0, y=0, relwidth=1)
         self.frame2_tit.place(x=0, y=0, relwidth=1)
         self.full_name.place(x=10, y=80)
         self.gender.place(x=10, y=140)
         self.age.place(x=10, y=200)
-        self.blood_group.place(x=10, y=260)
+        self.birthdate.place(x=10, y=260)
         self.phone.place(x=10, y=320)
         self.email.place(x=10, y=380)
         self.fullname_entry.place(x=180, y=80)
@@ -257,12 +257,13 @@ class main_window:
         self.blood_entry.place(x=180, y=260)
         self.phone_entry.place(x=180, y=320)
         self.email_entry.place(x=180, y=380)
-        self.gen_button.place(x=10, y=430, width=200)
-        self.clear_button.place(x=350, y=430, width=200)
-        self.exit_button.place(x=300, y=430, width=200)
-        self.msg_frame1.place(x=10,y=490, width=625, height=150)
+        self.gen_button.place(x=10, y=550, width=200)
+        self.clear_button.place(x=250, y=550, width=200)
+        self.exit_button.place(x=500, y=550, width=200)
+        
+        self.msg_frame1.place(x=10,y=450, width=625, height=190)
         self.msg_label.place(x=0, y=0, relwidth=1, relheight=1)
-        self.ID_Frame.place(x=10, y=100, width=645, height=400)
+        self.ID_Frame.place(x=10, y=100, width=690, height=400)
         self.F2_txt.place(x=0, y=0, relwidth=1, relheight=1)
         
         
