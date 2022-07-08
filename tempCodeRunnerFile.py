@@ -1,1 +1,2 @@
-font = 20,  
+
+                               image = self.Tk_Image          
