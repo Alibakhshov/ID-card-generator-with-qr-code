@@ -364,8 +364,7 @@ class main_window:
             self.img_F2 = IT.PhotoImage(self.res_F2)
             self.F2_txt.config(image=self.img_F2)
             self.Qrcode.clear()
-
-            self.msg = 'Done'
+            self.msg = 'Completed'
             self.msg_label.config(text=self.msg,
                                   fg='green',
                                   font=('cooper', 30, 'bold')
@@ -382,6 +381,11 @@ class main_window:
         self.msg_label.config(text='')
         self.F2_txt.config(image='')
         self.gender_entry.current(0)
+        self.msg = 'Please, enter your information'
+        self.msg_label.config(text=self.msg,
+                                  fg='black',
+                                  font=('cooper', 20, 'bold')
+                                  )
 
     def Exit(self):
         root.quit()
