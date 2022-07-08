@@ -201,7 +201,7 @@ class main_window:
         self.msg = ''
         self.msg_frame1 = Frame(self.frame1, 
                                 bg = 'white',
-                                relief=SUNKEN, 
+                                relief=SUNKEN,
                                 bd=1,)
         
         # creating a label for the frame1 message
@@ -209,7 +209,7 @@ class main_window:
                               text = self.msg,
                               font = ('cooper', 15, 'bold'),
                               fg = 'red',
-                              bg = 'white'
+                              bg = 'white',
                               )
         # creating a frame for the ID card(frame2) area
         self.ID_Frame = Frame(self.frame2,
@@ -256,12 +256,12 @@ class main_window:
     def Generate(self):
         global msg
         if self.Name.get() == '' or self.Gender.get() == '' or self.Age.get() == '' or self.bloodGroup.get() == '' or self.Phone.get() == '' or self.Email.get() == '':
-            self.msg = 'Error'
-            self.msg_label.config(text=self.msg, fg = 'red')
+            self.msg = 'Please fill in all required entry fields'
+            self.msg_label.config(text=self.msg, fg = 'red', font = ('cooper', 20, 'bold'),   )
             
         elif self.gender_entry.current() == 0:
-            self.msg = 'Select Gender'
-            self.msg_label.config(text=self.msg, fg = 'red')
+            self.msg = 'Please select gender'
+            self.msg_label.config(text=self.msg, fg = 'red', font = ('cooper', 30, 'bold'),   )
             
         else:
         
@@ -297,7 +297,7 @@ class main_window:
           self.Qrcode.clear()
           
           self.msg = 'Done'
-          self.msg_label.config(text=self.msg, fg = 'green')
+          self.msg_label.config(text=self.msg, fg = 'green', font = ('cooper', 30, 'bold'),)
     
     def Clear(self):
         
