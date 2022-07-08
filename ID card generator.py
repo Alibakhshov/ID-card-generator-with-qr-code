@@ -1,5 +1,4 @@
 from tkinter import *
-from turtle import bgcolor, fillcolor
 from PIL import Image as I
 from tkinter import ttk 
 from PIL import ImageTk as IT
@@ -24,7 +23,7 @@ class main_window:
                            text = "ID card generator", 
                            font = ('cooper', 20, 'bold'),
                            pady = 20,
-                           bg   = '#000000',
+                           bg   = '#292421',
                            fg   = '#ffffff'
                            )
         
@@ -134,7 +133,7 @@ class main_window:
                                     width = 30,
                                     bg = "white", 
                                     fg = "black",)
-        self.fullname_entry.insert(END, "Ex: Ivan Ivanov")
+        
         
         
         
@@ -203,6 +202,12 @@ class main_window:
                                  font = ('cooper', 15, 'bold')
                                  )
         
+        self.exit_button = Button(self.frame1,
+                                 command= self.Exit,
+                                 text = 'Exit',
+                                 font = ('cooper', 15, 'bold')
+                                 )
+        
         # printing a message on the frame1
         self.msg = ''
         self.msg_frame1 = Frame(self.frame1, 
@@ -254,6 +259,7 @@ class main_window:
         self.email_entry.place(x=180, y=380)
         self.gen_button.place(x=10, y=430, width=200)
         self.clear_button.place(x=350, y=430, width=200)
+        self.exit_button.place(x=300, y=430, width=200)
         self.msg_frame1.place(x=10,y=490, width=625, height=150)
         self.msg_label.place(x=0, y=0, relwidth=1, relheight=1)
         self.ID_Frame.place(x=10, y=100, width=645, height=400)
@@ -327,6 +333,9 @@ class main_window:
         self.msg_label.config(text='')
         self.F2_txt.config(image='')
         self.gender_entry.current(0) 
+        
+    def Exit(self):
+        root.quit()
         
     
 root = Tk()
