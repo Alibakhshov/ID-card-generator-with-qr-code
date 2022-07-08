@@ -1,5 +1,5 @@
 from tkinter import *
-from turtle import fillcolor
+from turtle import bgcolor, fillcolor
 from PIL import Image as I
 from tkinter import ttk 
 from PIL import ImageTk as IT
@@ -7,6 +7,7 @@ from PIL import ImageDraw as ID
 from PIL import ImageFont as IF
 import qrcode as Q
 from resizeimage  import resizeimage as re
+from tkinter import ttk
 
 
  
@@ -61,7 +62,7 @@ class main_window:
                                 bg = '#000000',
                                 fg = '#ffffff',
                                 text = 'Details',
-                                font = 20,
+                                font = ('cooper', 20, 'bold'),
                                 pady = 5                        
         )
         
@@ -70,7 +71,7 @@ class main_window:
                                 bg = '#000000',
                                 fg = '#ffffff',
                                 text = 'ID Card',
-                                font = 20,
+                                font = ('cooper', 20, 'bold'),
                                 pady = 5                        
         )
         
@@ -78,42 +79,42 @@ class main_window:
         self.full_name = Label(self.frame1,
                                 text = 'Full name',
                                 bg = 'white',
-                                font = 20,                    
+                                font = ('cooper', 13, 'bold'),                   
         )
         
         # Creating a label for gender
         self.gender = Label(self.frame1,
                                 text = 'Gender',
                                 bg = 'white',
-                                font = 20,                    
+                                font = ('cooper', 13, 'bold'),                      
         )
         
         # Creating a label for age
         self.age = Label(self.frame1,
                                 text = 'Age',
                                 bg = 'white',
-                                font = 20,                    
+                                font = ('cooper', 13, 'bold'),                       
         )
         
         # Creating a label for blood group
         self.blood_group = Label(self.frame1,
                                 text = 'Blood group',
                                 bg = 'white',
-                                font = 20,                    
+                                font = ('cooper', 13, 'bold'),                      
         )
         
         # Creating a label for mobile
         self.phone = Label(self.frame1,
                                 text = 'Mobile',
                                 bg = 'white',
-                                font = 20,                    
+                                font = ('cooper', 13, 'bold'),                      
         )
         
         # Creating a label for email
         self.email = Label(self.frame1,
                                 text = 'Email',
                                 bg = 'white',
-                                font = 20,                    
+                                font = ('cooper', 13, 'bold'),                       
         )
         
         
@@ -127,20 +128,23 @@ class main_window:
         # creating an entry for the "Full name" label
         self.fullname_entry = Entry(self.frame1,
                                     textvariable=self.Name,
-                                    font = 5, 
+                                    font = 10, 
                                     width = 30,
                                     bg = "white", 
-                                    fg = "black"                           
-                                    )
+                                    fg = "black",)
         
          # creating an entry for the "gender" label
         self.gender_entry = ttk.Combobox(self.frame1,
                                     textvariable=self.Gender,     
                                     font = 5, 
                                     width = 28,
-                                    state='readonly'                                                           
-                                    )
-        self.gender_entry['values'] = ('Gender', 'Male', 'Female', 'Others')
+                                    state='readonly',
+                                    foreground = "black",
+                                    background = "white"  
+        )                                  
+      
+
+        self.gender_entry['values'] = ('Select Gender', 'Male', 'Female', 'Others')
         self.gender_entry.current(0)
         
         # creating an entry for the "age" label
