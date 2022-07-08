@@ -25,13 +25,15 @@ class main_window:
                            font = ('cooper', 20, 'bold'),
                            pady = 20,
                            bg   = '#000000',
-                           fg   = '#ffffff')
+                           fg   = '#ffffff'
+                           )
         
         # Creating a logo in our label
         self.logo = Frame(self.title, 
                           relief = SUNKEN,
                           bd = 1,
-                          bg = 'white')
+                          bg = 'white'
+                          )
         
         self.logo_img = I.open('user logo.png')
         self.res_img = self.logo_img.resize((70,70))
@@ -132,6 +134,10 @@ class main_window:
                                     width = 30,
                                     bg = "white", 
                                     fg = "black",)
+        self.fullname_entry.insert(END, "Ex: Ivan Ivanov")
+        
+        
+        
         
          # creating an entry for the "gender" label
         self.gender_entry = ttk.Combobox(self.frame1,
@@ -211,11 +217,13 @@ class main_window:
                               fg = 'red',
                               bg = 'white',
                               )
+        
         # creating a frame for the ID card(frame2) area
         self.ID_Frame = Frame(self.frame2,
                               relief=SUNKEN,
                               bd=1,
                               bg = 'white')
+        
         # creating a label for frame2
         self.F2_txt = Label(self.ID_Frame,
                               text="ID\nCard\nNot Found",
@@ -254,14 +262,23 @@ class main_window:
         
         
     def Generate(self):
-        global msg
+        
         if self.Name.get() == '' or self.Gender.get() == '' or self.Age.get() == '' or self.bloodGroup.get() == '' or self.Phone.get() == '' or self.Email.get() == '':
             self.msg = 'Please fill in all required entry fields'
-            self.msg_label.config(text=self.msg, fg = 'red', font = ('cooper', 20, 'bold'),   )
+            self.msg_label.config(text=self.msg, fg = 'red', font = ('cooper', 20, 'bold'))
             
         elif self.gender_entry.current() == 0:
             self.msg = 'Please select gender'
-            self.msg_label.config(text=self.msg, fg = 'red', font = ('cooper', 30, 'bold'),   )
+            self.msg_label.config(text=self.msg, fg = 'red', font = ('cooper', 30, 'bold'))
+            
+        elif self.Phone.get() == '93' or self.Phone.get() == '11' or self.Phone.get() == '55' or self.Phone.get() == '50' or self.Phone.get() == '91':
+            self.msg = 'Please indicate your country code\nExample: +992 XX XXX XX XX'
+            self.msg_label.config(text=self.msg, fg = 'red', font = ('cooper', 20, 'bold'))
+        
+        elif self.Email.get() != '@':
+            self.msg = 'Invalid email'
+            self.msg_label.config(text=self.msg, fg = 'red', font = ('cooper', 30, 'bold'))
+            
             
         else:
         
